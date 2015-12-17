@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.1.2'
+version = '4.1.3'
 
 setup(name='Products.ATSuccessStory',
       version=version,
-      description="Success stories Product",
+      description="Success stories",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -14,10 +14,10 @@ setup(name='Products.ATSuccessStory',
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='plone 3.1 atsuccessstory',
+      keywords='plone successstory',
       author='Franco Pellegrini',
-      author_email='frapell@menttes.com',
-      url='http://plone.org/products/atsuccessstory',
+      author_email='frapell@gmail.com',
+      url='https://github.com/collective/Products.ATSuccessStory',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
