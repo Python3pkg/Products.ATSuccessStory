@@ -36,8 +36,8 @@ __docformat__ = 'plaintext'
 # Additional
 
 # Classes
-import ATSuccessStoryFolder
-import ATSuccessStory
+from . import ATSuccessStoryFolder
+from . import ATSuccessStory
 
 ##code-section init-module-footer #fill in your manual code here
 ##/code-section init-module-footer

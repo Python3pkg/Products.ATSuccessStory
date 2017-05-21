@@ -16,7 +16,7 @@ from BTrees.OOBTree import OOBTree
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from zope.interface import implements
-import interfaces
+from . import interfaces
 from Products.ATSuccessStory.content.ATSuccessStoryFolder import ATSuccessStoryFolder
 from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
 

@@ -23,7 +23,7 @@ import transaction
 
 def fix_search_path(assignement, site, location):
     # Now we get all Success Story Folders
-    ss_portlets = [i for i in assignement.values() if ISuccessStoryPortlet.providedBy(i)]
+    ss_portlets = [i for i in list(assignement.values()) if ISuccessStoryPortlet.providedBy(i)]
 
     try:
         location = '/'.join(location.getPhysicalPath())
@@ -33,13 +33,13 @@ def fix_search_path(assignement, site, location):
     for portlet in ss_portlets:
         if hasattr(portlet.data, 'global_portlet'):
             
-            msg = u"Fixing portlet \"%s\" for %s"%(portlet.header, location)
+            msg = "Fixing portlet \"%s\" for %s"%(portlet.header, location)
             LOG(PROJECTNAME, INFO, msg)
             if not portlet.data.global_portlet:
                 # If it's not a global portlet, we get the searchpath
                 search_path = portlet.searchpath
 
-                msg = u"This is not a global portlet, old search path: %s"%search_path
+                msg = "This is not a global portlet, old search path: %s"%search_path
                 LOG(PROJECTNAME, INFO, msg)
                 if search_path.startswith('/'):
                     search_path = search_path[1:]
@@ -51,7 +51,7 @@ def fix_search_path(assignement, site, location):
 
             else:
 
-                msg = u"This is a global portlet"
+                msg = "This is a global portlet"
                 LOG(PROJECTNAME, INFO, msg)
                 # If it is, we just set the searchpath to site root
                 ss_folder = site
@@ -59,13 +59,13 @@ def fix_search_path(assignement, site, location):
 
             search_path = '/'.join(ss_folder.getPhysicalPath())
 
-            msg = u"New search path %s"%search_path
+            msg = "New search path %s"%search_path
             LOG(PROJECTNAME, INFO, msg)
             portlet.data.searchpath = search_path
             del portlet.data.global_portlet
 
         else:
-            msg = u"Portlet \"%s\" for %s is already updated"%(portlet.header, location)
+            msg = "Portlet \"%s\" for %s is already updated"%(portlet.header, location)
             LOG(PROJECTNAME, INFO, msg)
 
 def updatePortlets(portal_setup):
@@ -74,7 +74,7 @@ def updatePortlets(portal_setup):
     changes so they keep working
     """
 
-    msg = u"Starting to update portlets"
+    msg = "Starting to update portlets"
     LOG(PROJECTNAME, INFO, msg)
     # Part of this code was obtained from plone.app.portlets.test.test_setup.py
 
@@ -104,7 +104,7 @@ def updatePortlets(portal_setup):
         # Now we get the portlets from the global categories
         # This is taken from plone.app.portlets.exportimport.portlets.py
         for category in (USER_CATEGORY, GROUP_CATEGORY, CONTENT_TYPE_CATEGORY, CONTEXT_CATEGORY,):
-            for name, assignement in column.get(category, {}).items():
+            for name, assignement in list(column.get(category, {}).items()):
                 fix_search_path(assignement, site, category)
                 
         # Finally we do the same for the site root

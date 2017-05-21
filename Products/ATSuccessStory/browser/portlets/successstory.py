@@ -36,20 +36,20 @@ class ISuccessStoryPortlet(IPortletDataProvider):
     same.
     """
 
-    header = schema.TextLine(title=_(u"Header"),
-                             description=_(u"Portlet header"),
+    header = schema.TextLine(title=_("Header"),
+                             description=_("Portlet header"),
                              required=True)
 
-    searchpath = schema.Choice(title=_(u"Stories Path"),
-                               description=_(u"Search for success stories inside this path"),
+    searchpath = schema.Choice(title=_("Stories Path"),
+                               description=_("Search for success stories inside this path"),
                                required=True,
-                               vocabulary=u'atss.existing_folders')
+                               vocabulary='atss.existing_folders')
 
-    number_of_stories = schema.Int(title=_(u"Number of stories"),
-                                   description=_(u"Specify how many Success Stories you want displayed at the same time in the portlet. Most commonly you will need 1."),
+    number_of_stories = schema.Int(title=_("Number of stories"),
+                                   description=_("Specify how many Success Stories you want displayed at the same time in the portlet. Most commonly you will need 1."),
                                    required=True)
-    keywords = schema.Tuple(title=_(u"Categories"),
-                           description=_(u"Items containing what categories "
+    keywords = schema.Tuple(title=_("Categories"),
+                           description=_("Items containing what categories "
                                          "to show. If none is selected, this "
                                          "field will be ignored."),
                            required=False,
@@ -89,7 +89,7 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen. Here, we use the title that the user gave.
         """
-        return _(u"Success Story Portlet")
+        return _("Success Story Portlet")
 
 class Renderer(base.Renderer):
     """Portlet renderer.
@@ -104,7 +104,7 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         portal_state = getMultiAdapter((self.context, self.request),
-                                       name=u'plone_portal_state')
+                                       name='plone_portal_state')
         self.portal_url = portal_state.portal_url()
         self.portal = portal_state.portal()
 
@@ -165,8 +165,8 @@ class AddForm(base.AddForm):
     constructs the assignment that is being added.
     """
     form_fields = form.Fields(ISuccessStoryPortlet)
-    label = _(u"Add Success Story Portlet")
-    description = _(u"This portlet displays a random success story")
+    label = _("Add Success Story Portlet")
+    description = _("This portlet displays a random success story")
     
     def create(self, data):
         assignment = Assignment()
@@ -180,6 +180,6 @@ class EditForm(base.EditForm):
     zope.formlib which fields to display.
     """
     form_fields = form.Fields(ISuccessStoryPortlet)
-    label = _(u"Add Success Story Portlet")
-    description = _(u"This portlet displays a random success story")
+    label = _("Add Success Story Portlet")
+    description = _("This portlet displays a random success story")
 

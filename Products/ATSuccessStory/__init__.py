@@ -58,7 +58,7 @@ from Products.CMFCore import DirectoryView
 from Products.CMFCore import permissions as cmfpermissions
 from Products.CMFCore import utils as cmfutils
 from Products.CMFPlone.utils import ToolInit
-from config import *
+from .config import *
 
 DirectoryView.registerDirectory('skins', product_globals)
 
@@ -75,7 +75,7 @@ def initialize(context):
     ##/code-section custom-init-top
 
     # imports packages and types for registration
-    import content
+    from . import content
 
 
     # Initialize portal content

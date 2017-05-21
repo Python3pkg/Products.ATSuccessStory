@@ -15,11 +15,11 @@ def existingSSFolders( context ):
     
     results = pc.searchResults(portal_type='ATSuccessStoryFolder')
     
-    terms = [SimpleVocabulary.createTerm(portal_path, portal_path, _(u'Global'))]
+    terms = [SimpleVocabulary.createTerm(portal_path, portal_path, _('Global'))]
 
     for value in results:
         path = value.getPath()
-        terms.append(SimpleVocabulary.createTerm(path, path, u'%s - %s'%(value.Title, value.getPath())))
+        terms.append(SimpleVocabulary.createTerm(path, path, '%s - %s'%(value.Title, value.getPath())))
     
     return SimpleVocabulary(terms)
     
